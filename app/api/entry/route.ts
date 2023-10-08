@@ -1,6 +1,6 @@
+import { update } from '@/utils/actions';
 import { getUserFromClerkID } from '@/utils/auth';
 import { prisma } from '@/utils/db';
-import { update } from '@utils/actions'
 import { NextResponse } from 'next/server'
 
 export const POST = async (request: Request) => {
