@@ -1,6 +1,7 @@
 import Editor from '@/components/Editor'
 import { getUserFromClerkID } from '@/utils/auth';
 import { prisma } from '@/utils/db';
+import { FC } from 'react'
 
 const getEntry = async (id: string) => {
   const user = await getUserFromClerkID()
@@ -19,7 +20,13 @@ const getEntry = async (id: string) => {
   return entry
 }
 
-const JournalEditorPage = async ({ params }) => {
+interface JournalEditorPageProps {
+  params: {
+    id: string;
+  };
+}
+
+const JournalEditorPage: FC<JournalEditorPageProps> = async ({ params }) => {
   const entry = await getEntry(params.id)
 
   return (
