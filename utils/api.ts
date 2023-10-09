@@ -18,7 +18,7 @@ export const newEntry = async () => {
   const res = await fetch(
     new Request(createURL('/api/entry'), {
       method: 'POST',
-      body: JSON.stringify({ content: 'new entry' }),
+      body: JSON.stringify({ content: 'Write about your day...' }),
     })
   )
 
@@ -29,7 +29,7 @@ export const newEntry = async () => {
   }
 }
 
-export const updateEntry = async (id: string, updates) => {
+export const updateEntry = async (id: string, updates: object) => {
   const res = await fetch(
     new Request(createURL(`/api/entry/${id}`), {
       method: 'PATCH',

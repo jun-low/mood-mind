@@ -1,5 +1,6 @@
 import { UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const links: { label: string, href: string }[] = [
   { label: 'Journals', href: '/journal' },
@@ -10,7 +11,12 @@ const DashboardLayout = ({ children }: any) => {
   return (
     <div className="w-screen h-screen relative">
       <aside className="absolute left-0 top-0 h-full w-[200px] border-r border-black/10">
-        <div className="px-4 my-4">
+        <div className="px-4 my-4 flex items-center justify-start">
+          <Image
+            src="/lotus.svg"
+            alt="MoodMinder lotus logo"
+            className="w-8 mr-2"
+          />
           <span className="text-3xl"><Link href="/">Mood</Link></span>
         </div>
         <div>

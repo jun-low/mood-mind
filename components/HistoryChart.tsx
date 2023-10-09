@@ -17,7 +17,7 @@ const CustomTooltip = ({ payload, label, active }) => {
       <div
         className="py-4 px-6 custom-tooltip bg-white/5 shadow-sm border border-black/10 rounded-lg backdrop-blur-sm">
         <div className="absolute right-2 top-2 w-2 h-2 rounded-full" style={ { borderColor: analysis.color } }></div>
-        <p className="label text-sm text-black/30">{ dateLabel }</p>
+        <p className="label text-sm text-neutral-900/30">{ dateLabel }</p>
         <p className="intro text-md uppercase">{ analysis.mood }</p>
       </div>
     )

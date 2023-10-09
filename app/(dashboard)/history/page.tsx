@@ -23,6 +23,7 @@ const HistoryPage = async () => {
   const { analyses, averageScore } = await getData()
   return (
     <div className="h-full px-6 py-8">
+      <h1 className="text-4xl mb-12">History</h1>
       <div>
         <h1 className="text-2xl mb-4">{ `Avg. Sentiment: ${ averageScore }` }</h1>
       </div>
