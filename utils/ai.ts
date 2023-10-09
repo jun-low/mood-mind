@@ -1,7 +1,10 @@
-import { OpenAI } from 'langchain/llms/openai'
-import { PromptTemplate } from 'langchain/prompts'
-import { StructuredOutputParser, OutputFixingParser } from 'langchain/output_parsers'
-import { z } from 'zod'
+import { loadQARefineChain } from 'langchain/chains';
+import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
+import { MemoryVectorStore } from 'langchain/vectorstores/memory';
+import { OpenAI } from 'langchain/llms/openai';
+import { PromptTemplate } from 'langchain/prompts';
+import { StructuredOutputParser, OutputFixingParser } from 'langchain/output_parsers';
+import { z } from 'zod';
 
 // Structure ai output everytime, so response always has same format/facts
 const parser = StructuredOutputParser.fromZodSchema(
@@ -63,4 +66,34 @@ export const analyzeEntry = async (entry) => {
     const fix = await fixParser.parse(output)
     return fix
   }
+}
+
+export const qa = async (question: string, entries) => {
+  // Get input entries and extracting relevant content and metadata.
+  const docs = entries.map(
+      (entry) =>
+          new Document({
+            pageContent: entry.content,
+            metadata: {source: entry.id, date: entry.createdAt},
+          })
+  )
+  const model = new OpenAI({temperature: 0, modelName: 'gpt-3.5-turbo'})
+
+  // Chain for the model
+  const chain = loadQARefineChain(model)
+
+  // Initialize embeddings for language understanding.
+  const embeddings = new OpenAIEmbeddings()
+
+  // Create a vector store from the documents with embeddings.
+  const vectorStore = await MemoryVectorStore.fromDocuments(docs, embeddings)
+  const relevantDocs = await vectorStore.similaritySearch(question)
+
+  // Utilize the QA refinement chain to generate an answer
+  const res = await chain.call({
+    input_documents: relevantDocs,
+    question,
+  })
+
+  return res.output_text
 }
