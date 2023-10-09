@@ -1,4 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MoodMinder 🪷
+
+MoodMinder is a AI-powered tracker for your daily emotions and moods. This full-stack web application helps you gain insights into your emotional well-being over time. With MoodMinder, you can better understand your moods, identify patterns, and take steps toward a more balanced and happier life.
+
+## Features
+
+- **Emotion Tracking**: Easily log your daily emotions and moods, just like your diary!
+
+- **AI Analysis**: Leverages AI to analyze your journal entry and provide summery, subject, color mood, and sentimental score.
+
+- **Visual Analytics**: View your mood history with interactive charts to identify trends or just ask a question about your logs.
+
+- **Secure Authentication**: User authentication and security are managed using the [Clerk API](https://clerk.com/).
+
+## Technologies Used
+
+- **Next.js**: A popular React framework for building server-rendered applications.
+
+- **Prisma**: A modern database toolkit for Node.js and TypeScript.
+
+- **Tailwind CSS**: A utility-first CSS framework for creating responsive and visually appealing designs.
+
+- **Recharts**: A composable charting library for React.
+
+- **TypeScript**: A statically typed superset of JavaScript for improved code quality and maintainability.
+
+- **Zod**: A runtime type checking library for JavaScript and TypeScript.
+
+## Prerequisites
+
+Before you can run MoodMinder locally, ensure you have the following dependencies installed:
+
+- Node.js (v14 or higher)
+- npm or Yarn or pnpm
 
 ## Getting Started
 
@@ -18,17 +51,8 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The Next.js app is deploy to the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
