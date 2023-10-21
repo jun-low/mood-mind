@@ -11,6 +11,8 @@ export default async function Home() {
       <div className="w-full max-w-[600px] mx-auto">
         <Image
           src="/lotus.svg"
+          width={80}
+          height={80}
           alt="MoodMinder lotus logo"
           className="w-20 mb-4"
         />

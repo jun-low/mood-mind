@@ -5,7 +5,7 @@ import { useAutosave } from 'react-autosave'
 import Spinner from '@/components/Spinner'
 import { useRouter } from 'next/navigation'
 
-const Editor = ({ entry }) => {
+const Editor = ({ entry }: any) => {
   const [value, setValue] = useState(entry.content)
   const [currentEntry, setEntry] = useState(entry)
   const [isSaving, setIsSaving] = useState(false)
@@ -55,7 +55,7 @@ const Editor = ({ entry }) => {
           <ul role="list" className="divide-y divide-gray-200">
             <li className="py-4 px-8 flex items-center justify-between">
               <div className="text-xl font-semibold w-1/3">Subject</div>
-              <div className="text-xl">{currentEntry.analysis.subject}</div>
+              <div className="text-xl text-right">{currentEntry.analysis.subject}</div>
             </li>
 
             <li className="py-4 px-8 flex items-center justify-between">

@@ -51,7 +51,7 @@ const getPrompt = async (content: string) => {
   return input
 }
 
-export const analyzeEntry = async (entry) => {
+export const analyzeEntry = async (entry: any) => {
   const input = await getPrompt(entry.content)
   const model = new OpenAI({ temperature: 0, modelName: 'gpt-3.5-turbo' })
   const output = await model.call(input)
@@ -68,14 +68,15 @@ export const analyzeEntry = async (entry) => {
   }
 }
 
-export const qa = async (question: string, entries) => {
+export const qa = async (question: string, entries: any) => {
   // Get input entries and extracting relevant content and metadata.
   const docs = entries.map(
-      (entry) =>
-          new Document({
-            pageContent: entry.content,
-            metadata: {source: entry.id, date: entry.createdAt},
-          })
+    (entry: any) =>
+  // @ts-ignore
+      new Document({
+        pageContent: entry.content,
+        metadata: {source: entry.id, date: entry.createdAt},
+      })
   )
   const model = new OpenAI({temperature: 0, modelName: 'gpt-3.5-turbo'})
 

@@ -2,6 +2,8 @@
 
 MoodMinder is a AI-powered tracker for your daily emotions and moods. This full-stack web application helps you gain insights into your emotional well-being over time. With MoodMinder, you can better understand your moods, identify patterns, and take steps toward a more balanced and happier life.
 
+![home](./public/homepage.png)
+
 ## Features
 
 - **Emotion Tracking**: Easily log your daily emotions and moods, just like your diary!
@@ -11,6 +13,8 @@ MoodMinder is a AI-powered tracker for your daily emotions and moods. This full-
 - **Visual Analytics**: View your mood history with interactive charts to identify trends or just ask a question about your logs.
 
 - **Secure Authentication**: User authentication and security are managed using the [Clerk API](https://clerk.com/).
+
+![dashboard](./public/dashboard.png)
 
 ## Technologies Used
 

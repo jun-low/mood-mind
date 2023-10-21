@@ -9,7 +9,7 @@ vi.mock('@clerk/nextjs', () => {
       new Promise((resolve) =>
         resolve({ userId: 'user_2NNEqL2nrIRdJ194ndJqAHwEfxC' })
       ),
-    ClerkProvider: ({ children }) => <div>{children}</div>,
+    ClerkProvider: ({ children }: any) => <div>{children}</div>,
     useUser: () => ({
       isSignedIn: true,
       user: {

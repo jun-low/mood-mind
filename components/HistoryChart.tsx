@@ -1,7 +1,8 @@
 'use client'
-import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts'
+import { Line, LineChart, ResponsiveContainer, Tooltip, TooltipProps, XAxis } from 'recharts'
+import React from 'react'
 
-const CustomTooltip = ({ payload, label, active }) => {
+const CustomTooltip = ({ payload, label, active }: TooltipProps<number, string>) => {
   const dateLabel: string = new Date(label).toLocaleString('en-us', {
     weekday: 'long',
     year: 'numeric',
@@ -11,7 +12,7 @@ const CustomTooltip = ({ payload, label, active }) => {
     minute: 'numeric',
   })
 
-  if (active) {
+  if (active && payload) {
     const analysis = payload[0].payload
     return (
       <div
@@ -26,7 +27,7 @@ const CustomTooltip = ({ payload, label, active }) => {
   return null
 }
 
-const HistoryChart = ({ data }) => {
+const HistoryChart = ({ data }: any) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart width={ 300 } height={ 100 } data={ data }>

@@ -14,6 +14,8 @@ const DashboardLayout = ({ children }: any) => {
         <div className="px-4 my-4 flex items-center justify-start">
           <Image
             src="/lotus.svg"
+            width={80}
+            height={80}
             alt="MoodMinder lotus logo"
             className="w-8 mr-2"
           />

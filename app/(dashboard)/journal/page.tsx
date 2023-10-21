@@ -35,7 +35,7 @@ const JournalPage = async () => {
         {data.map((entry) => (
           <div key={entry.id}>
             <Link href={`/journal/${entry.id}`}>
-              <EntryCard entry={entry} />
+              <EntryCard entry={ entry } />
             </Link>
           </div>
         ))}
