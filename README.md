@@ -12,7 +12,7 @@ MoodMinder is a AI-powered tracker for your daily emotions and moods. This full-
 
 - **Visual Analytics**: View your mood history with interactive charts to identify trends or just ask a question about your logs.
 
-- **Secure Authentication**: User authentication and security are managed using the [Clerk API](https://clerk.com/).
+- **Secure Authentication**: User authentication and security are managed using [Clerk](https://clerk.com/docs).
 
 ![dashboard](./public/dashboard.png)
 
@@ -49,14 +49,14 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result and add your OpenAI API Key.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Deploy on Vercel
+## Deployment
 
-The Next.js app is deploy to the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This app is deploy to the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 
