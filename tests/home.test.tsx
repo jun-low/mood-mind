@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { vi } from 'vitest'
 import HomePage from '../app/page'
 
-vi.mock('@clerk/nextjs', () => {
+vi.mock('@clerk/nextjs/server', () => {
   // Create an mockedFunctions object to match the functions we are importing from the @nextjs/clerk package in the ClerkComponent component.
   const mockedFunctions = {
     auth: () =>

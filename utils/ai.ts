@@ -1,10 +1,13 @@
-import { loadQARefineChain } from 'langchain/chains';
-import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
-import { MemoryVectorStore } from 'langchain/vectorstores/memory';
-import { OpenAI } from 'langchain/llms/openai';
-import { PromptTemplate } from 'langchain/prompts';
-import { StructuredOutputParser, OutputFixingParser } from 'langchain/output_parsers';
+import { loadQARefineChain } from '@langchain/classic/chains';
+import { OutputFixingParser } from '@langchain/classic/output_parsers';
+import { MemoryVectorStore } from '@langchain/classic/vectorstores/memory';
+import { Document } from '@langchain/core/documents';
+import { StructuredOutputParser } from '@langchain/core/output_parsers';
+import { PromptTemplate } from '@langchain/core/prompts';
+import { ChatOpenAI, OpenAIEmbeddings } from '@langchain/openai';
 import { z } from 'zod';
+
+const MODEL = 'gpt-4o-mini'
 
 // Structure ai output everytime, so response always has same format/facts
 const parser = StructuredOutputParser.fromZodSchema(
@@ -53,14 +56,14 @@ const getPrompt = async (content: string) => {
 
 export const analyzeEntry = async (entry: any) => {
   const input = await getPrompt(entry.content)
-  const model = new OpenAI({ temperature: 0, modelName: 'gpt-3.5-turbo' })
-  const output = await model.call(input)
+  const model = new ChatOpenAI({ temperature: 0, model: MODEL })
+  const output = (await model.invoke(input)).text
 
   try {
     return parser.parse(output)
   } catch (e) {
     const fixParser = OutputFixingParser.fromLLM(
-      new OpenAI({ temperature: 0, modelName: 'gpt-3.5-turbo' }),
+      new ChatOpenAI({ temperature: 0, model: MODEL }),
       parser
     )
     const fix = await fixParser.parse(output)
@@ -72,16 +75,15 @@ export const qa = async (question: string, entries: any) => {
   // Get input entries and extracting relevant content and metadata.
   const docs = entries.map(
     (entry: any) =>
-  // @ts-ignore
       new Document({
         pageContent: entry.content,
         metadata: {source: entry.id, date: entry.createdAt},
       })
   )
-  const model = new OpenAI({temperature: 0, modelName: 'gpt-3.5-turbo'})
+  const model = new ChatOpenAI({ temperature: 0, model: MODEL })
 
   // Chain for the model
-  const chain = loadQARefineChain(model)
+  const chain = loadQARefineChain(model as any)
 
   // Initialize embeddings for language understanding.
   const embeddings = new OpenAIEmbeddings()
@@ -91,7 +93,7 @@ export const qa = async (question: string, entries: any) => {
   const relevantDocs = await vectorStore.similaritySearch(question)
 
   // Utilize the QA refinement chain to generate an answer
-  const res = await chain.call({
+  const res = await chain.invoke({
     input_documents: relevantDocs,
     question,
   })

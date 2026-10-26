@@ -21,13 +21,14 @@ const getEntry = async (id: string) => {
 }
 
 interface JournalEditorPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 const JournalEditorPage: FC<JournalEditorPageProps> = async ({ params }) => {
-  const entry = await getEntry(params.id)
+  const { id } = await params
+  const entry = await getEntry(id)
 
   return (
     <div className="w-full h-full">

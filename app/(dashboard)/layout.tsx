@@ -35,7 +35,7 @@ const DashboardLayout = ({ children }: any) => {
         <header className="h-[60px] border-b border-black/10">
           <nav className="px-4 h-full">
             <div className="flex items-center justify-end h-full">
-              <UserButton afterSignOutUrl="/" />
+              <UserButton />
             </div>
           </nav>
         </header>
